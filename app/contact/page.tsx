@@ -1,119 +1,194 @@
-import { MessageCircle, Phone } from "lucide-react";
+"use client";
+
+import { MessageCircle, Phone, Mail, Clock } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function Contact() {
-
-  const whatsappLink =
-    "https://wa.me/918921342411";
+  const whatsappLink = "https://wa.me/918921342411";
 
   return (
-    <main className="min-h-screen bg-white text-black pt-32 pb-24 px-6">
+    <main className="min-h-screen bg-white text-black pt-28 pb-20">
 
-      {/* HERO SECTION */}
-      <section className="max-w-4xl mx-auto text-center">
+  <div className="max-w-7xl mx-auto px-6">
 
-        <p className="text-sm uppercase tracking-[4px] text-gray-500 mb-6">
+    <div className="grid lg:grid-cols-2 gap-20 items-center">
+
+      {/* LEFT */}
+
+      <motion.div
+        initial={{ opacity: 0, x: -40 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.7 }}
+        viewport={{ once: true }}
+        className="text-center lg:text-left"
+      >
+
+        <p className="uppercase tracking-[4px] text-sm text-gray-500">
 
           Contact
 
         </p>
 
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight leading-tight">
+        <h1 className="mt-5 text-4xl sm:text-5xl lg:text-6xl font-semibold leading-tight">
 
-          Let’s work together.
+          Let's build something amazing together.
 
         </h1>
 
-        <p className="mt-8 text-lg text-gray-600 leading-8 max-w-2xl mx-auto">
+        <p className="mt-6 text-base sm:text-lg text-gray-600 leading-8 max-w-xl mx-auto lg:mx-0">
 
-          Reach out to Lucid8 for IT services,
-          cybersecurity solutions, and software support.
+          Whether you need IT services,
+          AI solutions,
+          cybersecurity,
+          or enterprise software,
+          we're ready to help.
 
         </p>
 
-      </section>
+        <a
+          href="https://wa.me/918921342411"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-10 inline-flex items-center justify-center gap-3 w-full sm:w-auto bg-black text-white px-8 py-4 rounded-full hover:bg-gray-800 transition"
+        >
 
-      {/* CONTACT CARD */}
-      <section className="max-w-3xl mx-auto mt-24">
+          <MessageCircle size={22} />
 
-        <div className="border border-gray-200 rounded-3xl p-8 sm:p-12">
+          Chat on WhatsApp
 
-          <h2 className="text-2xl font-semibold tracking-tight mb-10">
+        </a>
 
-            Get in touch
+      </motion.div>
 
-          </h2>
+      {/* RIGHT */}
 
-          <div className="space-y-10">
+      <motion.div
+        initial={{ opacity: 0, x: 40 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.7 }}
+        viewport={{ once: true }}
+        className="space-y-5"
+      >
 
-            {/* PHONE */}
-            <div className="flex items-start gap-4">
+        {/* Phone */}
 
-              <Phone
-                size={22}
-                className="text-gray-500 mt-1"
-              />
+        <div className="border border-gray-200 rounded-3xl p-6 flex items-center gap-5 hover:shadow-lg transition">
 
-              <div>
+          <div className="w-14 h-14 rounded-2xl bg-black text-white flex items-center justify-center">
 
-                <h3 className="font-medium">
-
-                  Phone
-
-                </h3>
-
-                <p className="mt-2 text-gray-600">
-
-                  +91 89213 42411
-
-                </p>
-
-              </div>
-
-            </div>
-
-            {/* WHATSAPP */}
-            <div className="flex items-start gap-4">
-
-              <MessageCircle
-                size={22}
-                className="text-gray-500 mt-1"
-              />
-
-              <div>
-
-                <h3 className="font-medium">
-
-                  WhatsApp
-
-                </h3>
-
-                <p className="mt-2 text-gray-600">
-
-                  Chat directly with our team.
-
-                </p>
-
-              </div>
-
-            </div>
+            <Phone size={24} />
 
           </div>
 
-          {/* BUTTON */}
-          <a
-            href={whatsappLink}
-            target="_blank"
-            className="inline-block mt-12 bg-black text-white px-8 py-3 rounded-full hover:bg-gray-800 transition"
-          >
+          <div>
 
-            Chat on WhatsApp
+            <h3 className="font-semibold text-lg">
 
-          </a>
+              Phone
+
+            </h3>
+
+            <p className="text-gray-600 mt-1">
+
+              +91 89213 42411
+
+            </p>
+
+          </div>
 
         </div>
 
-      </section>
+        {/* WhatsApp */}
 
-    </main>
+        <div className="border border-gray-200 rounded-3xl p-6 flex items-center gap-5 hover:shadow-lg transition">
+
+          <div className="w-14 h-14 rounded-2xl bg-green-500 text-white flex items-center justify-center">
+
+            <MessageCircle size={24} />
+
+          </div>
+
+          <div>
+
+            <h3 className="font-semibold text-lg">
+
+              WhatsApp
+
+            </h3>
+
+            <p className="text-gray-600 mt-1">
+
+              Quick replies within minutes.
+
+            </p>
+
+          </div>
+
+        </div>
+
+        {/* Email */}
+
+        <div className="border border-gray-200 rounded-3xl p-6 flex items-center gap-5 hover:shadow-lg transition">
+
+          <div className="w-14 h-14 rounded-2xl bg-black text-white flex items-center justify-center">
+
+            <Mail size={24} />
+
+          </div>
+
+          <div>
+
+            <h3 className="font-semibold text-lg">
+
+              Email
+
+            </h3>
+
+            <p className="text-gray-600 mt-1 break-all">
+
+              hrlucid8@gmail.com
+
+            </p>
+
+          </div>
+
+        </div>
+
+        {/* Working Hours */}
+
+        <div className="border border-gray-200 rounded-3xl p-6 flex items-center gap-5 hover:shadow-lg transition">
+
+          <div className="w-14 h-14 rounded-2xl bg-black text-white flex items-center justify-center">
+
+            <Clock size={24} />
+
+          </div>
+
+          <div>
+
+            <h3 className="font-semibold text-lg">
+
+              Working Hours
+
+            </h3>
+
+            <p className="text-gray-600 mt-1">
+
+              Monday – Friday<br />
+              9:00 AM – 6:00 PM
+
+            </p>
+
+          </div>
+
+        </div>
+
+      </motion.div>
+
+    </div>
+
+  </div>
+
+</main>
   );
 }

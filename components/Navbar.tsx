@@ -1,47 +1,31 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 import { Menu, X } from "lucide-react";
-
 import { AnimatePresence, motion } from "framer-motion";
 
 export default function Navbar() {
-
   const [menuOpen, setMenuOpen] = useState(false);
-
   const [showNavbar, setShowNavbar] = useState(true);
-
   const [lastScrollY, setLastScrollY] = useState(0);
 
-  // SCROLL DETECTION
   useEffect(() => {
-
     const handleScroll = () => {
-
       if (window.scrollY > lastScrollY) {
-
-        // scrolling down
         setShowNavbar(false);
-
       } else {
-
-        // scrolling up
         setShowNavbar(true);
-
       }
 
       setLastScrollY(window.scrollY);
-
     };
 
     window.addEventListener("scroll", handleScroll);
 
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
 
   return (
@@ -51,37 +35,39 @@ export default function Navbar() {
       transition={{ duration: 0.3 }}
       className="fixed top-5 left-0 w-full z-50 px-4 sm:px-6"
     >
+      {/* Floating Navbar */}
 
-      {/* FLOATING NAVBAR */}
-      <nav className="max-w-6xl mx-auto bg-white text-black rounded-full border border-gray-200 shadow-xl">
+      <nav className="max-w-6xl mx-auto rounded-full">
 
-        <div className="flex items-center justify-between px-6 py-2">
+       <div className="flex items-center justify-between w-full px-2 sm:px-4 md:px-6 py-3">
 
-          {/* LOGO */}
+          {/* Logo */}
+
           <Link href="/">
 
-            <h1 className="text-2xl font-bold tracking-tight">
+  <div className="flex items-center justify-center w-16 h-16 rounded-full bg-white/90 backdrop-blur-xl shadow-lg hover:scale-105 transition">
 
-              Lucid8
+    <Image
+      src="/logo.png"
+      alt="Lucid8"
+      width={36}
+      height={36}
+      className="object-contain"
+    />
 
-            </h1>
+  </div>
 
-          </Link>
+</Link>
 
-          {/* DESKTOP MENU */}
+          {/* Desktop Menu */}
+
           <div className="hidden md:flex items-center gap-8 text-sm font-medium">
 
-            <Link
-              href="/"
-              className="hover:text-gray-500 transition"
-            >
+            <Link href="/" className="hover:text-gray-500 transition">
               Home
             </Link>
 
-            <Link
-              href="/services"
-              className="hover:text-gray-500 transition"
-            >
+            <Link href="/services" className="hover:text-gray-500 transition">
               IT Services
             </Link>
 
@@ -92,10 +78,7 @@ export default function Navbar() {
               Cybersecurity
             </Link>
 
-            <Link
-              href="/testing"
-              className="hover:text-gray-500 transition"
-            >
+            <Link href="/testing" className="hover:text-gray-500 transition">
               Testing
             </Link>
 
@@ -108,21 +91,25 @@ export default function Navbar() {
 
           </div>
 
-          {/* MOBILE BUTTON */}
+          {/* Mobile Menu Button */}
+
           <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="md:hidden"
-          >
-
-            {menuOpen ? <X size={28} /> : <Menu size={28} />}
-
-          </button>
+  onClick={() => setMenuOpen(!menuOpen)}
+  className="md:hidden flex items-center justify-center w-14 h-14 rounded-full bg-white/90 backdrop-blur-xl shadow-lg hover:scale-105 transition"
+>
+  {menuOpen ? (
+    <X size={26} className="text-black" />
+  ) : (
+    <Menu size={26} className="text-black" />
+  )}
+</button>
 
         </div>
 
       </nav>
 
-      {/* MOBILE MENU */}
+      {/* Mobile Menu */}
+
       <AnimatePresence>
 
         {menuOpen && (
